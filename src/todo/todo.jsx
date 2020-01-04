@@ -35,8 +35,9 @@ export default class Todo extends Component {
     }
     handleSearch() {
         const search = description.value
-        axios.get(`${URL}/getSearch?search=${search}`, config)
+        axios.get(`${URL}/getSearch?search=%${search}%`, config)
             .then(resp => this.setState({...this.state, description, list: resp.data }))
+            console.log(search)
     }
     handleChange(e){
         this.setState({...this.state, description: e.target.value})
